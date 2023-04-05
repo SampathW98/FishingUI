@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fishing.App">
+    <Application.Resources>
+        
+        <!-- colors -->
+        <Color x:Key="Background">#12140c</Color>
+        <Color x:Key="Accent">#bfe05f</Color>
+        <Color x:Key="BackgroundGradientStart">#272821</Color>
+        <Color x:Key="BodyText">#797A76</Color>
+        
+        <!-- styles -->
+        <Style x:Key="OnboardingHeader" TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontFamily" Value="BoldFont"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="FontSize" Value="32"/>
+        </Style>
+
+        <Style x:Key="OnboardingContent" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource BodyText}"/>
+            <Setter Property="FontFamily" Value="SemiBoldFont"/>
+            <Setter Property="Margin" Value="20,0"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style x:Key="PageHeader" TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontFamily" Value="BoldFont"/>
+            <Setter Property="FontSize" Value="27"/>
+        </Style>
+
+        <Style x:Key="PageSubHeader" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource BodyText}"/>
+            <Setter Property="FontFamily" Value="SemiBoldFont"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+
+        <Style x:Key="SectionHeader" TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontFamily" Value="SemiBoldFont"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style x:Key="SectionDetail" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource BodyText}"/>
+            <Setter Property="FontFamily" Value="SemiBoldFont"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+    </Application.Resources>
+</Application>

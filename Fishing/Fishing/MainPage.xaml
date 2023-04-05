@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:viewModels="clr-namespace:Fishing.ViewModel"
+             xmlns:controls="clr-namespace:Fishing.Controls"
+             x:Class="Fishing.MainPage"
+             BackgroundColor="{StaticResource Background}">
+
+    <ContentPage.BindingContext>
+        <viewModels:MainViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <ControlTemplate
+		            x:Key="TabItemTemplate">
+                <Grid RowSpacing="0">
+                    <Image
+				            VerticalOptions="Center"
+				            HorizontalOptions="Center"
+				            WidthRequest="24"
+				            HeightRequest="24"
+                            Margin="6"
+				            Source="{TemplateBinding CurrentIcon}" />
+                </Grid>
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="FabTabItemTemplate">
+                <Grid>
+                    <ImageButton InputTransparent="True"
+                                 Source="{TemplateBinding CurrentIcon}"
+                                 Padding="10"
+                                 BackgroundColor="{StaticResource Accent}"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center"
+                                 HeightRequest="40"
+                                 WidthRequest="40"
+                                 Margin="6"
+                                 CornerRadius="14"/>
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+
+    <Grid RowDefinitions="*,70">
+        
+        
+        <!--Upper Body-->
+
+        <StackLayout Padding="10">
+
+            <!--Header-->
+            <Grid ColumnDefinitions="*,auto"
+                  HorizontalOptions="Fill">
+                <StackLayout>
+                    <Label Text="Good Morning"
+                           Style="{StaticResource PageHeader}"/>
+                    <Label Text="It's a great day to strike a fish"
+                           Style="{StaticResource PageSubHeader}"/>
+                </StackLayout>
+
+                <controls:GradientFrame Grid.Column="1" Padding="10">
+                    <Image Grid.Column="1"
+                           Source="{Binding UserImage}"
+                           HeightRequest="50">
+                        <Image.Clip>
+                            <RoundRectangleGeometry CornerRadius="10" Rect="0,0,47,50"/>
+                        </Image.Clip>
+                    </Image>
+                </controls:GradientFrame>
+            </Grid>
+            
+            
+            <!--weather-->
+            <controls:GradientFrame>
+                <Grid RowDefinitions="auto,auto" 
+                      ColumnDefinitions="*,auto">
+
+                    <StackLayout>
+                        <Label Text="{Binding Location}"
+                               Style="{StaticResource SectionHeader}"/>
+                        <Label Text="{Binding CurrentDate}"
+                               Style="{StaticResource SectionDetail}"
+                               TextTransform="Uppercase"/>
+                        <Label Text="{Binding Temp}"
+                               Style="{StaticResource PageHeader}"
+                               TextColor="{StaticResource Accent}"
+                               Margin="0,15,0,0"/>
+                    </StackLayout>
+
+                    <Image Grid.Row="0" Grid.Column="1"
+                           Source="SunnyIcon.png"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           WidthRequest="140"
+                           HeightRequest="160"
+                           Margin="-30,-30,0,0"/>
+
+                    <Label Grid.Row="1" 
+                           Text="{Binding WeatherCondition}"
+                           Style="{StaticResource SectionDetail}"/>
+
+                    <Label Grid.Column="1" Grid.Row="1">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Chance of Rain: "
+                                      Style="{StaticResource SectionDetail}"/>
+                                <Span Text="{Binding ChanceOfRain}"
+                                      Style="{StaticResource SectionDetail}"
+                                      TextColor="{StaticResource Accent}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </Grid>
+            </controls:GradientFrame>
+
+
+            <!--Recommended Spots-->
+            <Label Text="Recommended Spots" Style="{StaticResource SectionHeader}"/>
+            
+            
+
+
+
+
+        </StackLayout>
+        
+        
+
+
+        <!--Tab View Bottom-->
+        <xct:TabView Grid.Row="1" 
+                     TabStripHeight="60" Margin="0,0,0,5">
+            <xct:TabViewItem Icon="TabIcon1.png"
+                             ControlTemplate="{StaticResource TabItemTemplate}"/>
+            <xct:TabViewItem Icon="TabIcon2.png"
+                             ControlTemplate="{StaticResource TabItemTemplate}"/>
+            <xct:TabViewItem Icon="TabPlus.png"
+                             ControlTemplate="{StaticResource FabTabItemTemplate}"
+                             />
+            <xct:TabViewItem Icon="TabIcon3.png"
+                             ControlTemplate="{StaticResource TabItemTemplate}"/>
+            <xct:TabViewItem Icon="TabIcon4.png"
+                             ControlTemplate="{StaticResource TabItemTemplate}"/>
+        </xct:TabView>
+
+
+        <BoxView x:Name="FadeBox" 
+                 Grid.RowSpan="2"
+                 Opacity="1"
+                 InputTransparent="True"
+                 Color="Black"/>
+    </Grid>
+
+</ContentPage>

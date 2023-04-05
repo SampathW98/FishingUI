@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fishing.Android", "Fishing\Fishing.Android\Fishing.Android.csproj", "{682D8DC5-5060-443B-A94A-DA103D5AFD22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fishing", "Fishing\Fishing\Fishing.csproj", "{C1DD6469-2D4D-453F-A658-759E28352D73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{682D8DC5-5060-443B-A94A-DA103D5AFD22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{682D8DC5-5060-443B-A94A-DA103D5AFD22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{682D8DC5-5060-443B-A94A-DA103D5AFD22}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{682D8DC5-5060-443B-A94A-DA103D5AFD22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{682D8DC5-5060-443B-A94A-DA103D5AFD22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{682D8DC5-5060-443B-A94A-DA103D5AFD22}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C1DD6469-2D4D-453F-A658-759E28352D73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1DD6469-2D4D-453F-A658-759E28352D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1DD6469-2D4D-453F-A658-759E28352D73}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C1DD6469-2D4D-453F-A658-759E28352D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1DD6469-2D4D-453F-A658-759E28352D73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1DD6469-2D4D-453F-A658-759E28352D73}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6356262B-8D71-44BA-916E-33D22F845A84}
+	EndGlobalSection
+EndGlobal

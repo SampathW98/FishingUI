@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:magic="http://magic.com/schemas/gradients"
+             xmlns:viewModel="clr-namespace:Fishing.ViewModel"
+             xmlns:model="clr-namespace:Fishing.Models"
+             x:Class="Fishing.OnboardingPage">
+
+    <ContentPage.BindingContext>
+        <viewModel:OnboardingViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        
+        <Grid BackgroundColor="{StaticResource Background}" 
+              RowDefinitions="1.5*, 1*" RowSpacing="0">
+
+            <BoxView Color="Green"/>
+
+            <CarouselView Grid.Row="0"
+                          IndicatorView="indicatorView"
+                          Grid.RowSpan="2"
+                          ItemsSource="{Binding Items}">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate x:DataType="model:OnboardingModel">
+                        <Grid RowDefinitions="1.5*,1*" RowSpacing="0">
+
+                            <Image Source="{Binding Image}" Aspect="AspectFill"/>
+
+                            <StackLayout Grid.Row="1" Spacing="0">
+
+                                <Label Text="{Binding Title}" 
+                                       Style="{StaticResource OnboardingHeader}"/>
+                                <Label Text="{Binding Content}" 
+                                       Style="{StaticResource OnboardingContent}"
+                                       MaxLines="3"/>
+
+                            </StackLayout>
+
+                        </Grid>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            
+            <magic:GradientView>
+                <magic:GradientCollection>
+                    <magic:RadialGradient x:Name="MyRadialGradient" 
+                                          Center="0.4,0"
+                                          RadiusX="2500">
+                        <magic:GradientStop Color="Transparent" Offset="0" />
+                        <magic:GradientStop Color="Transparent" Offset="0.9" />
+                        <magic:GradientStop Color="{StaticResource Background}" Offset="1" />
+                    </magic:RadialGradient>
+                </magic:GradientCollection>
+            </magic:GradientView>
+
+            <Grid Grid.Row="1" 
+                  VerticalOptions="End" 
+                  Margin="10,0,0,15"
+                  HeightRequest="60"
+                  ColumnDefinitions="*,*">
+
+                <IndicatorView x:Name="indicatorView"
+                               Margin="15"
+                               HorizontalOptions="Start"
+                               IndicatorColor="{StaticResource BackgroundGradientStart}"
+                               SelectedIndicatorColor="{StaticResource Accent}"/>
+
+                <Frame Grid.Column="1" 
+                       CornerRadius="10"
+                       Margin="0,0,20,0"
+                       Padding="0">
+                    <Frame.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="{StaticResource BackgroundGradientStart}"/>
+                            <GradientStop Color="{StaticResource Background}"/>
+                        </LinearGradientBrush>
+                    </Frame.Background>
+                    
+                    <Grid ColumnDefinitions="*,auto">
+                        
+                        <Label Text="Explore" 
+                               FontFamily="SemiBoldFont"
+                               FontSize="16"
+                               TextColor="White" 
+                               VerticalOptions="Center" 
+                               HorizontalOptions="Start" 
+                               Margin="15"/>
+                        
+                        <ImageButton Grid.Column="1" 
+                                     Source="right.png"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="End"
+                                     Padding="10"
+                                     BackgroundColor="{StaticResource Accent}"
+                                     CornerRadius="10"
+                                     WidthRequest="50"
+                                     HeightRequest="50"
+                                     Clicked="ImageButton_Clicked"/>
+                        
+                    </Grid>
+                </Frame>
+                
+                
+
+            </Grid>
+            
+            <BoxView x:Name="FadeBox" 
+                     Grid.RowSpan="2"
+                     Opacity="0"
+                     InputTransparent="True"
+                     Color="Black"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
