@@ -2,6 +2,7 @@
 using MvvmHelpers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Fishing.ViewModel
@@ -10,7 +11,17 @@ namespace Fishing.ViewModel
     {
         private FishingLocationModel location;
 
-        public FishingLocationModel Locaton { get => location; set => location = value; }
+        public FishingLocationModel Location { get => location; set => location = value; }
+
+        public string PeopleAtLocation { 
+            get
+            {
+                var first = location.People.FirstOrDefault();
+                if (first == null)
+                    return "It's just you";
+                return $"{first.Name} and {location.People.Count - 1} others";
+            }
+        }
 
 
         public FishingLocationViewModel(FishingLocationModel location)

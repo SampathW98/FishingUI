@@ -47,89 +47,179 @@
 
 
     <Grid RowDefinitions="*,70">
-        
-        
+
+        <ScrollView Orientation="Vertical">
+            
         <!--Upper Body-->
+            <StackLayout Padding="10">
 
-        <StackLayout Padding="10">
-
-            <!--Header-->
-            <Grid ColumnDefinitions="*,auto"
-                  HorizontalOptions="Fill">
-                <StackLayout>
-                    <Label Text="Good Morning"
-                           Style="{StaticResource PageHeader}"/>
-                    <Label Text="It's a great day to strike a fish"
-                           Style="{StaticResource PageSubHeader}"/>
-                </StackLayout>
-
-                <controls:GradientFrame Grid.Column="1" Padding="10">
-                    <Image Grid.Column="1"
-                           Source="{Binding UserImage}"
-                           HeightRequest="50">
-                        <Image.Clip>
-                            <RoundRectangleGeometry CornerRadius="10" Rect="0,0,47,50"/>
-                        </Image.Clip>
-                    </Image>
-                </controls:GradientFrame>
-            </Grid>
-            
-            
-            <!--weather-->
-            <controls:GradientFrame>
-                <Grid RowDefinitions="auto,auto" 
-                      ColumnDefinitions="*,auto">
-
+                <!--Header-->
+                <Grid ColumnDefinitions="*,auto"
+                      HorizontalOptions="Fill"  Margin="10">
                     <StackLayout>
-                        <Label Text="{Binding Location}"
-                               Style="{StaticResource SectionHeader}"/>
-                        <Label Text="{Binding CurrentDate}"
-                               Style="{StaticResource SectionDetail}"
-                               TextTransform="Uppercase"/>
-                        <Label Text="{Binding Temp}"
-                               Style="{StaticResource PageHeader}"
-                               TextColor="{StaticResource Accent}"
-                               Margin="0,15,0,0"/>
+                        <Label Text="Good Morning"
+                               Style="{StaticResource PageHeader}"/>
+                        <Label Text="It's a great day to strike a fish"
+                               Style="{StaticResource PageSubHeader}"/>
                     </StackLayout>
 
-                    <Image Grid.Row="0" Grid.Column="1"
-                           Source="SunnyIcon.png"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"
-                           WidthRequest="140"
-                           HeightRequest="160"
-                           Margin="-30,-30,0,0"/>
-
-                    <Label Grid.Row="1" 
-                           Text="{Binding WeatherCondition}"
-                           Style="{StaticResource SectionDetail}"/>
-
-                    <Label Grid.Column="1" Grid.Row="1">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="Chance of Rain: "
-                                      Style="{StaticResource SectionDetail}"/>
-                                <Span Text="{Binding ChanceOfRain}"
-                                      Style="{StaticResource SectionDetail}"
-                                      TextColor="{StaticResource Accent}"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-
+                    <controls:GradientFrame Grid.Column="1" Padding="10">
+                        <Image Grid.Column="1"
+                               Source="{Binding UserImage}"
+                               HeightRequest="50">
+                            <Image.Clip>
+                                <RoundRectangleGeometry CornerRadius="10" Rect="0,0,47,50"/>
+                            </Image.Clip>
+                        </Image>
+                    </controls:GradientFrame>
                 </Grid>
-            </controls:GradientFrame>
-
-
-            <!--Recommended Spots-->
-            <Label Text="Recommended Spots" Style="{StaticResource SectionHeader}"/>
             
             
+                <!--weather-->
+                <controls:GradientFrame>
+                    <Grid RowDefinitions="auto,auto" 
+                          ColumnDefinitions="*,auto">
+
+                        <StackLayout>
+                            <Label Text="{Binding Location}"
+                                   Style="{StaticResource SectionHeader}"/>
+                            <Label Text="{Binding CurrentDate}"
+                                   Style="{StaticResource SectionDetail}"
+                                   TextTransform="Uppercase"/>
+                            <Label Text="{Binding Temp}"
+                                   Style="{StaticResource PageHeader}"
+                                   TextColor="{StaticResource Accent}"
+                                   Margin="0,15,0,0"/>
+                        </StackLayout>
+
+                        <Image Grid.Row="0" Grid.Column="1"
+                               Source="SunnyIcon.png"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               WidthRequest="140"
+                               HeightRequest="160"
+                               Margin="-30,-30,0,0"/>
+
+                        <Label Grid.Row="1" 
+                               Text="{Binding WeatherCondition}"
+                               Style="{StaticResource SectionDetail}"/>
+
+                        <Label Grid.Column="1" Grid.Row="1">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Chance of Rain: "
+                                          Style="{StaticResource SectionDetail}"/>
+                                    <Span Text="{Binding ChanceOfRain}"
+                                          Style="{StaticResource SectionDetail}"
+                                          TextColor="{StaticResource Accent}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                    </Grid>
+                </controls:GradientFrame>
 
 
+                <!--Recommended Spots-->
+                <Label Text="Recommended Spots" Style="{StaticResource SectionHeader}"/>
+
+                <CarouselView ItemsSource="{Binding FishingLocations}" HeightRequest="400">
+
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <controls:GradientFrame>
+                                <Grid RowDefinitions="auto,auto,auto,auto" RowSpacing="20">
+
+                                    <Grid ColumnDefinitions="*,auto">
+                                        <StackLayout>
+                                            <Label Text="{Binding Location.Name}"
+                                                   Style="{StaticResource SectionHeader}"/>
+                                            <Label Text="{Binding Location.LatLong}"
+                                                   Style="{StaticResource SectionDetail}"/>
+                                        </StackLayout>
+
+                                        <ImageButton Grid.Column="1"
+                                                     Source="LaunchMaps.png"
+                                                     BackgroundColor="{StaticResource Accent}"
+                                                     HeightRequest="50" WidthRequest="50"
+                                                     CornerRadius="14"
+                                                     Padding="13"/>
+                                    </Grid>
+
+                                    <Grid Grid.Row="1" ColumnDefinitions="*,*">
+                                        <StackLayout Orientation="Horizontal"
+                                                     BindableLayout.ItemsSource="{Binding Location.People}"
+                                                     Margin="20,0,0,0">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Image Source="{Binding Image}"
+                                                           WidthRequest="30" HeightRequest="30"
+                                                           VerticalOptions="Start"
+                                                           Margin="-20,0,0,0">
+                                                        <Image.Clip>
+                                                            <RoundRectangleGeometry CornerRadius="15" Rect="0,0,30,30"/>
+                                                        </Image.Clip>
+                                                    </Image>
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Vertical" Grid.Column="1" Spacing="0"> 
+                                            <Label Text="{Binding PeopleAtLocation}"
+                                                   Style="{StaticResource SectionDetail}"
+                                                   TextColor="White"/>
+                                            <Label Text="are in this location"
+                                                   Style="{StaticResource SectionDetail}"/>
+                                        </StackLayout>
+                                        
+                                    </Grid>
 
 
-        </StackLayout>
-        
+                                    <Grid Grid.Row="2"
+                                          ColumnDefinitions="2*,*">
+                                        <Frame Padding="0"
+                                               CornerRadius="10">
+                                            <Image Source="{Binding Location.LocationThumbnail}"
+                                                   Aspect="AspectFill"
+                                                   />
+                                        </Frame>
+                                        <Frame Padding="0"
+                                               CornerRadius="10"
+                                               Grid.Column="1">
+                                            <Image Source="{Binding Location.MapThumbnail}"
+                                                   Aspect="AspectFill"/>
+                                        </Frame>
+                                    </Grid>
+
+
+                                    <StackLayout Grid.Row="3">
+                                        <Label Style="{StaticResource SectionHeader}" 
+                                               Text="Fish at this area" />
+                                        <StackLayout BindableLayout.ItemsSource="{Binding Location.Fish}"
+                                                     Orientation="Horizontal"
+                                                     Spacing="20">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Image Aspect="AspectFit"
+                                                           HorizontalOptions="Start"
+                                                           Source="{Binding Image}"
+                                                           VerticalOptions="Start" />
+
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                </Grid>
+                            </controls:GradientFrame>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                
+                </CarouselView>
+
+
+            </StackLayout>
+        </ScrollView>
         
 
 
