@@ -168,7 +168,7 @@
                                             <Label Text="{Binding PeopleAtLocation}"
                                                    Style="{StaticResource SectionDetail}"
                                                    TextColor="White"/>
-                                            <Label Text="are in this location"
+                                            <Label Text="are in this locations"
                                                    Style="{StaticResource SectionDetail}"/>
                                         </StackLayout>
                                         
